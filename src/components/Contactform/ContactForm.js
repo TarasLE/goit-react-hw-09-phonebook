@@ -1,4 +1,3 @@
-// import React, { Component } from 'react'
 import { useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { connect } from 'react-redux'

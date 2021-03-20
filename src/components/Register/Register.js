@@ -1,4 +1,4 @@
-import { React, Component } from 'react'
+import { useState } from 'react'
 import { connect } from 'react-redux'
 import authOperations from '../../redux/auth/auth-operations'
 import PropTypes from 'prop-types'
@@ -7,19 +7,25 @@ import { CSSTransition } from 'react-transition-group'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-class Register extends Component {
-    state = {
-        name: '',
-        email: '',
-        password: '',
+function Register({ onRegister }) {
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const handleName = (event) => {
+        setName(event.target.value)
     }
 
-    checkRegisterData = () => {
-        if (
-            this.state.email == '' ||
-            this.state.password == '' ||
-            this.state.name == ''
-        ) {
+    const handleEmail = (event) => {
+        setEmail(event.target.value)
+    }
+
+    const handlePassword = (event) => {
+        setPassword(event.target.value)
+    }
+
+    const checkRegisterData = () => {
+        if (email == '' || password == '' || name == '') {
             toast.error('Name, email or password cant be empty', {
                 position: 'top-center',
                 autoClose: 2000,
@@ -34,82 +40,74 @@ class Register extends Component {
         }
     }
 
-    handleChange = (event) => {
-        const { name, value } = event.currentTarget
-        this.setState({
-            [name]: value,
-        })
-    }
-
-    handleSubmit = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault()
-        if (this.checkRegisterData()) {
+        if (checkRegisterData()) {
             return
         }
-        this.props.onRegister(this.state)
-        this.setState({ name: '', email: '', password: '' })
+        onRegister({ name, email, password })
+        setName('')
+        setEmail('')
+        setPassword('')
     }
 
-    render() {
-        const { name, email, password } = this.state
-        return (
-            <div>
-                <CSSTransition
-                    in={true}
-                    appear={true}
-                    timeout={500}
-                    classNames={{
-                        appear: styles.HeaderFadeAppear,
-                        appearActive: styles.HeaderFadeAppearActive,
-                    }}
-                >
-                    <div className={styles.Container}>
-                        <h1>Registration</h1>
-                        <form
-                            onSubmit={this.handleSubmit}
-                            autoComplete="off"
-                            className={styles.FormContainer}
-                        >
-                            <lable is="webview">
-                                NAME
-                                <input
-                                    type="name"
-                                    name="name"
-                                    value={name}
-                                    onChange={this.handleChange}
-                                    className={styles.FormItem}
-                                ></input>
-                            </lable>
-                            <lable is="webview">
-                                EMAIL
-                                <input
-                                    type="email"
-                                    name="email"
-                                    value={email}
-                                    onChange={this.handleChange}
-                                    className={styles.FormItem}
-                                ></input>
-                            </lable>
-                            <lable is="webview">
-                                PASSWORD
-                                <input
-                                    type="password"
-                                    name="password"
-                                    value={password}
-                                    onChange={this.handleChange}
-                                    className={styles.FormItem}
-                                ></input>
-                            </lable>
-                            <button type="submit" className={styles.FormBtn}>
-                                <h3>REGISTER</h3>
-                            </button>
-                        </form>
-                    </div>
-                </CSSTransition>
-                <ToastContainer />
-            </div>
-        )
-    }
+    return (
+        <div>
+            <CSSTransition
+                in={true}
+                appear={true}
+                timeout={500}
+                classNames={{
+                    appear: styles.HeaderFadeAppear,
+                    appearActive: styles.HeaderFadeAppearActive,
+                }}
+            >
+                <div className={styles.Container}>
+                    <h1>Registration</h1>
+                    <form
+                        onSubmit={handleSubmit}
+                        autoComplete="off"
+                        className={styles.FormContainer}
+                    >
+                        <lable is="webview">
+                            NAME
+                            <input
+                                type="name"
+                                name="name"
+                                value={name}
+                                onChange={handleName}
+                                className={styles.FormItem}
+                            ></input>
+                        </lable>
+                        <lable is="webview">
+                            EMAIL
+                            <input
+                                type="email"
+                                name="email"
+                                value={email}
+                                onChange={handleEmail}
+                                className={styles.FormItem}
+                            ></input>
+                        </lable>
+                        <lable is="webview">
+                            PASSWORD
+                            <input
+                                type="password"
+                                name="password"
+                                value={password}
+                                onChange={handlePassword}
+                                className={styles.FormItem}
+                            ></input>
+                        </lable>
+                        <button type="submit" className={styles.FormBtn}>
+                            <h3>REGISTER</h3>
+                        </button>
+                    </form>
+                </div>
+            </CSSTransition>
+            <ToastContainer />
+        </div>
+    )
 }
 
 Register.propTypes = {
