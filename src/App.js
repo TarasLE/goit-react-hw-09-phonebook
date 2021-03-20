@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import React, { Component, Suspense, lazy } from 'react'
 import Container from './components/Container/Container'
 import AppBar from './components/AppBar/AppBar'
@@ -15,41 +16,40 @@ const Login = lazy(() => import('./components/Login/Login'))
 const Register = lazy(() => import('./components/Register/Register'))
 const Phonebook = lazy(() => import('./components/Phonebook/Phonebook'))
 
-class App extends Component {
-    componentDidMount() {
-        this.props.onRefreshUser()
-    }
-    render() {
-        return (
-            <Container>
-                <AppBar />
-                <Suspense fallback={<h1>Loading...</h1>}>
-                    <Switch>
-                        <PublicRoute exact path="/" component={HomePage} />
-                        <PublicRoute
-                            path="/register"
-                            restricted
-                            component={Register}
-                            reDirectTo="/contacts"
-                        />
+function App({ onRefreshUser }) {
+    useEffect(() => {
+        onRefreshUser()
+    }, [])
 
-                        <PublicRoute
-                            path="/login"
-                            restricted
-                            component={Login}
-                            reDirectTo="/contacts"
-                        />
-                        <PrivateRoute
-                            exact
-                            path="/contacts"
-                            component={Phonebook}
-                            reDirectTo="/login"
-                        />
-                    </Switch>
-                </Suspense>
-            </Container>
-        )
-    }
+    return (
+        <Container>
+            <AppBar />
+            <Suspense fallback={<h1>Loading...</h1>}>
+                <Switch>
+                    <PublicRoute exact path="/" component={HomePage} />
+                    <PublicRoute
+                        path="/register"
+                        restricted
+                        component={Register}
+                        reDirectTo="/contacts"
+                    />
+
+                    <PublicRoute
+                        path="/login"
+                        restricted
+                        component={Login}
+                        reDirectTo="/contacts"
+                    />
+                    <PrivateRoute
+                        exact
+                        path="/contacts"
+                        component={Phonebook}
+                        reDirectTo="/login"
+                    />
+                </Switch>
+            </Suspense>
+        </Container>
+    )
 }
 
 const mapDispatchToProps = {

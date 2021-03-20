@@ -6,6 +6,6 @@ const Container = ({ children }) => (
     <div className={styles.Container}>{children}</div>
 )
 
-Container.propTypes = {}
+Container.propTypes = { children: PropTypes.object.isRequired }
 
 export default Container

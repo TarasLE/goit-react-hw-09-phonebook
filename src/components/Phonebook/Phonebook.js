@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { CSSTransition } from 'react-transition-group'
 import phonebookOperations from '../../redux/phonebook/phonebook-operations'
@@ -11,56 +11,54 @@ import styles from './Phonebook.module.css'
 import PropTypes from 'prop-types'
 import './Phonebook.css'
 
-class Phonebook extends Component {
-    componentDidMount() {
-        this.props.fetchContacts()
-    }
+function Phonebook({ fetchContacts, contacts, isLoadingContats }) {
+    useEffect(() => {
+        fetchContacts()
+    }, [])
 
-    render() {
-        return (
-            <CSSTransition
-                in={true}
-                appear={true}
-                timeout={500}
-                classNames={{
-                    appear: styles.HeaderFadeAppear,
-                    appearActive: styles.HeaderFadeAppearActive,
-                }}
-            >
-                <div className={styles.Container}>
-                    <CSSTransition
-                        in={true}
-                        appear={true}
-                        timeout={500}
-                        classNames={{
-                            appear: styles.HeaderFadeAppear,
-                            appearActive: styles.HeaderFadeAppearActive,
-                        }}
-                    >
-                        <h1>Phonebook</h1>
-                    </CSSTransition>
+    return (
+        <CSSTransition
+            in={true}
+            appear={true}
+            timeout={500}
+            classNames={{
+                appear: styles.HeaderFadeAppear,
+                appearActive: styles.HeaderFadeAppearActive,
+            }}
+        >
+            <div className={styles.Container}>
+                <CSSTransition
+                    in={true}
+                    appear={true}
+                    timeout={500}
+                    classNames={{
+                        appear: styles.HeaderFadeAppear,
+                        appearActive: styles.HeaderFadeAppearActive,
+                    }}
+                >
+                    <h1>Phonebook</h1>
+                </CSSTransition>
 
-                    <ContactForm />
+                <ContactForm />
 
-                    <CSSTransition
-                        in={this.props.contacts.length >= 1}
-                        timeout={0}
-                        unmountOnExit
-                    >
-                        <Filter />
-                    </CSSTransition>
-                    {this.props.isLoadingContats && <Loader />}
-                    <CSSTransition
-                        in={this.props.contacts.length > 0}
-                        timeout={250}
-                        unmountOnExit
-                    >
-                        <ContactList />
-                    </CSSTransition>
-                </div>
-            </CSSTransition>
-        )
-    }
+                <CSSTransition
+                    in={contacts.length >= 1}
+                    timeout={0}
+                    unmountOnExit
+                >
+                    <Filter />
+                </CSSTransition>
+                {isLoadingContats && <Loader />}
+                <CSSTransition
+                    in={contacts.length > 0}
+                    timeout={250}
+                    unmountOnExit
+                >
+                    <ContactList />
+                </CSSTransition>
+            </div>
+        </CSSTransition>
+    )
 }
 
 Phonebook.propTypes = {
