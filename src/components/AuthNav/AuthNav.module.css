@@ -1,0 +1,20 @@
+.Link {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.Link:hover {
+    color: rgb(255, 0, 0);
+}
+
+.LinkActive {
+    color: rgb(255, 0, 0);
+}
+
+.Container {
+    display: flex;
+}
+
+.Registration {
+    margin-right: 20px;
+}

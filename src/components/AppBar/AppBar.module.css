@@ -1,0 +1,21 @@
+.Container {
+    display: flex;
+    width: 100%;
+    background-color: khaki;
+    background-image: linear-gradient(
+            to right,
+            rgba(129, 240, 151, 0.9),
+            rgba(110, 161, 196, 0.9)
+        ),
+        url(../../img/background.jpg);
+    border-bottom: solid 2px rgba(29, 28, 28, 0.1);
+}
+
+.Header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 30px;
+    margin-left: 30px;
+}

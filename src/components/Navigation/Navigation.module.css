@@ -1,0 +1,22 @@
+.Link {
+    text-decoration: none;
+    color: black;
+}
+
+.Link:hover {
+    text-decoration: none;
+    color: rgb(255, 1, 1);
+}
+
+.LinkActive {
+    color: rgb(255, 0, 0);
+}
+
+.Container {
+    display: flex;
+}
+
+.HeaderTitle {
+    margin-right: 20px;
+    /* color: rgb(0, 0, 0); */
+}
