@@ -4,8 +4,8 @@
     background-color: khaki;
     background-image: linear-gradient(
             to right,
-            rgba(129, 240, 151, 0.9),
-            rgba(110, 161, 196, 0.9)
+            rgba(216, 240, 129, 0.9),
+            rgba(196, 110, 110, 0.9)
         ),
         url(../../img/background.jpg);
     border-bottom: solid 2px rgba(29, 28, 28, 0.1);
