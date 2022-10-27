@@ -3,37 +3,42 @@
     align-items: center;
     margin: 0;
     padding: 0;
-}
+ }
 
-.ContainerText{
+.ContainerUserCorner{
     display: flex;
-    align-items: baseline;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .UserName {
-    margin-left: 15px;
-    margin-right: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 18px;
+    text-align: center;
 }
 
 .LogOutBtn {
     border: 1px solid;
     display: flex ;
+    justify-content: center;
     border-radius: 5px;
-    padding: 5px;
+    padding: 2px;
+    margin-left:10px;
     transition-duration: 250ms;
     background-color: rgba(84, 228, 103, 0.5);
     box-shadow: 1px 1px 3px 1px black, 1px 1px 3px 1px black,
     1px 1px 3px 1px black;
+    width: fit-content;
+    height: fit-content;
 }
 
 .LogOutBtn:hover {
-    color: #ffffff;
-    border: none;
+    background-color: #ffffff;
+    border: 1px solid;
 }
 
-.LogOutTxt{
-    margin: 0;
-}
 
 .Avatar {
     border-radius: 50%;

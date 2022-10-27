@@ -1,7 +1,7 @@
 .FormContainer {
     display: flex;
     flex-direction: column;
-    width: 30%;
+    min-width: 30%;
 }
 
 .Container {

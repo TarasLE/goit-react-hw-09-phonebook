@@ -14,13 +14,14 @@ const Homepage = () => (
         }}
     >
         <div className={styles.Container}>
-            <h1>Lets create your own phonebook</h1>
-            <img
-                src={Picture}
-                alt="loading..."
-                width="400"
-                className={styles.GifContainer}
-            />
+            <div className={styles.HomeBlock}>
+                <h1>Lets create your own phonebook</h1>
+                <img
+                    src={Picture}
+                    alt="loading..."
+                    className={styles.GifContainer}
+                />
+            </div>
         </div>
     </CSSTransition>
 )
