@@ -5,21 +5,34 @@
     padding: 0;
 }
 
+.ContainerText{
+    display: flex;
+    align-items: baseline;
+}
+
 .UserName {
     margin-left: 15px;
     margin-right: 15px;
 }
 
 .LogOutBtn {
-    border-radius: 5%;
-    width: 100px;
+    border: 1px solid;
+    display: flex ;
+    border-radius: 5px;
+    padding: 5px;
     transition-duration: 250ms;
     background-color: rgba(84, 228, 103, 0.5);
+    box-shadow: 1px 1px 3px 1px black, 1px 1px 3px 1px black,
+    1px 1px 3px 1px black;
 }
 
 .LogOutBtn:hover {
     color: #ffffff;
-    background-color: rgb(248, 23, 7);
+    border: none;
+}
+
+.LogOutTxt{
+    margin: 0;
 }
 
 .Avatar {
@@ -29,3 +42,5 @@
 .Avatar:hover {
     fill: #2196f3;
 }
+
+

@@ -16,14 +16,16 @@ const UserMenu = ({ avatar, name, onLogout }) => {
                 height="42"
                 className={styles.Avatar}
             />
-            <h2 className={styles.UserName}>Welcome {name}</h2>
-            <button
-                type="button"
-                onClick={onLogout}
-                className={styles.LogOutBtn}
-            >
-                <h3>Logout</h3>
-            </button>
+            <div className={styles.ContainerText}>
+                <h2 className={styles.UserName}>Welcome {name}</h2>
+                <button
+                    type="button"
+                    onClick={onLogout}
+                    className={styles.LogOutBtn}
+                >
+                    <h3 className={styles.LogOutTxt}>Logout</h3>
+                </button>
+            </div>
         </div>
     )
 }
